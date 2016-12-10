@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Postal Codes</string>
+    <string name="main.menu.action.about">Acerca de</string>
 </resources>

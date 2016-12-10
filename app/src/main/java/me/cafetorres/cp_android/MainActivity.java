@@ -1,8 +1,11 @@
 package me.cafetorres.cp_android;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -68,4 +71,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_about:
+                //Toast.makeText(this, "Elaborado por: CARLOS FERNANDO TORRES LUNA", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, about_activity.class );
+                startActivity(i);
+                return true;
+        }
+        return false;
+    }
 }

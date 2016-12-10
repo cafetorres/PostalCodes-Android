@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Details_cp"></activity>
+        <activity android:name=".about_activity"></activity>
     </application>
 
 </manifest>

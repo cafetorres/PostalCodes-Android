@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
+        android:gravity="center"
         android:id="@+id/txtCP"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
