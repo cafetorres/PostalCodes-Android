@@ -14,7 +14,7 @@
         android:text="Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
+        android:id="@+id/btn_cp"
         android:layout_below="@+id/txtCP"
         android:layout_centerHorizontal="true" />
 
@@ -26,5 +26,17 @@
         android:id="@+id/txtCP"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragmentList"
+        android:name="me.cafetorres.cp_android.fragments.HistoryListFragment"
+        tools:layout="@layout/fragment_list"
+        android:layout_below="@+id/btn_cp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="54dp" />
+
 
 </RelativeLayout>
