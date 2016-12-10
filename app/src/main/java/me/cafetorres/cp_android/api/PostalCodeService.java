@@ -1,5 +1,6 @@
 package me.cafetorres.cp_android.api;
 
+import me.cafetorres.cp_android.entities.PostalCodes;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -11,7 +12,7 @@ import retrofit2.http.Query;
 public interface PostalCodeService {
     @GET("/postalCodeSearchJSON")
     Call<PostalCodes> ListPostalcodes(@Query("country") String country,
-                                      @Query("maxRows") Integer maxRows,
+                                      @Query("maxRows") String maxRows,
                                       @Query("username")String username,
                                       @Query("postalcode")String postalcode);
 }
