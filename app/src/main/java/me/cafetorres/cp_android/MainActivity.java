@@ -8,9 +8,12 @@ import android.widget.EditText;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import me.cafetorres.cp_android.api.PostalCodeClient;
 import me.cafetorres.cp_android.api.PostalCodeService;
 import me.cafetorres.cp_android.entities.PostalCodes;
+import me.cafetorres.cp_android.fragments.HistoryListFragment;
+import me.cafetorres.cp_android.fragments.HistoryListFragmentListener;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,10 +23,12 @@ public class MainActivity extends AppCompatActivity {
     PostalCodeClient postalCodeClient=new PostalCodeClient();
     PostalCodeService postalCodeService;
 
-    @Bind(R.id.button)
-    Button button;
+    @Bind(R.id.btn_cp)
+    Button btn_cp;
     @Bind(R.id.txtCP)
     EditText txtCP;
+
+    private HistoryListFragmentListener fragmentListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +37,26 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         postalCodeService=postalCodeClient.getPostalCodeService();
+        HistoryListFragment fragment=(HistoryListFragment)getSupportFragmentManager().findFragmentById(R.id.fragmentList);
 
+        fragment.setRetainInstance(true);
+        fragmentListener=(HistoryListFragmentListener)fragment;
+        fragmentListener.clearList();
+    }
 
-        Call<PostalCodes> call=postalCodeService.ListPostalcodes("MX","8","cafetorres","36545");
+    @OnClick(R.id.btn_cp)
+    public void handleFetchClick(){
+        fragmentListener.clearList();
+        String txtpc= txtCP.getText().toString().trim();
+        if(!txtpc.isEmpty()){
+        Call<PostalCodes> call=postalCodeService.ListPostalcodes("MX","8","cafetorres",txtpc);
         call.enqueue(new Callback<PostalCodes>() {
             @Override
             public void onResponse(Call<PostalCodes> call, Response<PostalCodes> response) {
                 PostalCodes postalCodeResponse=response.body();
 
                 for(int i=0;i<postalCodeResponse.getPostalCodes().size();i++){
-                    Log.v("NAME",postalCodeResponse.getPostalCodes().get(i).getPlacename());
-                    Log.v("POSTALCODE",postalCodeResponse.getPostalCodes().get(i).getPostalcode());
+                    fragmentListener.addToList(postalCodeResponse.getPostalCodes().get(i));
 
                 }
             }
@@ -52,5 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("Error","Something went wrong: " + t.getMessage());
             }
         });
-    }
+
+    }}
 }

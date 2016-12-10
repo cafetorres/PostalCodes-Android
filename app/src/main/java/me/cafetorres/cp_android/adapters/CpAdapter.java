@@ -47,7 +47,7 @@ public class CpAdapter extends RecyclerView.Adapter<CpAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         PostalCode element = dataset.get(position);
-        String place = element.getPostalcode()+":" + element.getPlacename();
+        String place = element.getPostalcode()+" : " + element.getPlacename();
         holder.txtContent.setText(place);
         holder.setOnItemClickListener(element, onItemClickListener);
     }
