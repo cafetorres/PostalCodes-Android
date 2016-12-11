@@ -21,10 +21,10 @@ Video: [Postal Codes Android](https://youtu.be/3flSKXHCpuw)
 [Imagenes de la Aplicacion](/imagenes)
 
 
-![1](/img/6.JPG)
+![1](/imagenes/6.JPG)
 
-![1](/img/7.JPG)
+![2](/imagenes/7.JPG)
 
-![1](/img/8.JPG)
+![3](/imagenes/8.JPG)
 
-![1](/img/9.JPG)
+![4](/imagenes/9.JPG)
